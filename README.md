@@ -29,7 +29,7 @@ Este trabalho implementa uma **Rede Neural Convolucional (CNN)** para classifica
 
 ### Dimensionamento Automático via RA
 - **RA:** 5173156
-- **4 últimos dígitos:** 5173
+- **4 primeiros dígitos:** 5173
 - **N_TRAIN:** 5173 imagens (metade de cada classe)
 - **N_TEST:** 1552 imagens (30% arredondado para cima)
 - **Distribuição:** Balanceada entre gatos e cachorros
@@ -97,6 +97,11 @@ output_5173/
 ## Como Usar
 
 ### 1. Preparação
+
+Abra `Classificacao_Gato_vs_Cachorro_CNN.ipynb` em um ambiente Jupyter com as bibliotecas listadas em **Tecnologias** instaladas. Inicie o notebook a partir da pasta do projeto.
+
+O dataset não acompanha o repositório. Descompacte `PetImages` na raiz do projeto (ou na pasta imediatamente acima), preservando as subpastas `Cat/` e `Dog/`. O caminho Windows abaixo é uma alternativa específica da máquina original:
+
 ```python
 # Descompacte o dataset
 # C:\Users\jrdev\Downloads\PetImages\
@@ -106,15 +111,18 @@ output_5173/
 
 ### 2. Flags de Configuração
 ```python
-RECRIAR_SPLITS = False   # True para copiar imagens novamente (~5 min)
-TREINAR = False          # True para treinar o modelo (~33 min na CPU)
+RECRIAR_SPLITS = True    # Primeira execução: cria treino/ e teste/
+TREINAR = True           # Primeira execução: treina e salva os pesos
 ```
 
 ### 3. Execução
-- Rode primeira célula para inicializar
-- Rode células de preparação de splits
-- Defina `TREINAR = True` e rode treinamento
-- Gráficos são gerados automaticamente
+- Ajuste as flags na primeira célula **antes** de executá-la.
+- Execute as células em ordem, da inicialização até a análise final.
+- Confira as contagens: 5173 imagens de treino e 1552 de teste.
+- O treinamento salva pesos e gráficos em `output_5173/`; o tempo depende do hardware.
+- Nas próximas sessões, use `RECRIAR_SPLITS = False` para reutilizar as imagens já separadas e `TREINAR = False` para carregar `melhor_modelo.pth`, se ele existir.
+
+**Atenção:** `RECRIAR_SPLITS = True` apaga e recria as pastas `treino/` e `teste/` dentro de `OUTPUT_DIR`. Não guarde arquivos pessoais nessas pastas. Carregar pesos não recupera o histórico de métricas por época; o notebook pode exibir o gráfico salvo anteriormente.
 
 ---
 
