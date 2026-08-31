@@ -94,6 +94,10 @@ output_5173/
 
 ---
 
+## Documentação técnica
+
+Consulte [DOCUMENTACAO.md](DOCUMENTACAO.md) para configuração, diagnóstico de erros e limitações da avaliação, incluindo possível sobreposição entre treino e teste e a exibição de métricas históricas.
+
 ## Como Usar
 
 ### 1. Preparação
